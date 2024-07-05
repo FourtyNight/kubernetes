@@ -1,0 +1,20 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+    name  : my-web
+    labels:
+       app: my-web-app
+spec:
+    selector:
+        matchLabels:
+            project: webapp
+    template:
+     metadata:
+       labels:
+         project:webapp
+    spec:
+     containets:
+      - name : apache-app
+        image: fourtynight/k8sphp:latest
+        ports:
+         - containerPort: 80
